@@ -2,6 +2,7 @@ package com.cv.tlv.processors;
 
 import com.cv.tlv.domain.ResponseMessage;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
@@ -15,7 +16,9 @@ public class OutputProcessor {
 
     }
 
-    public void writeMessages(List<ResponseMessage> messages) {
-
+    public void writeMessages(List<ResponseMessage> messages) throws IOException {
+        for (ResponseMessage responseMessage : messages) {
+            outputStream.write((responseMessage.toString() + " ").getBytes());
+        }
     }
 }
